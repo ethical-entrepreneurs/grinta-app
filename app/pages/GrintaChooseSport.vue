@@ -26,7 +26,7 @@
     },
     methods: {
       next() {
-        this.$navigateTo(InviteFriend);
+        this.$navigateTo();
       },
     },
   }
