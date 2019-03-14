@@ -13,10 +13,12 @@
 </template>
 
 <script>
+  import * as SocialShare from 'nativescript-social-share'
+  
   export default {
     methods: {
       shareLink() {
-        console.log('share');
+        SocialShare.shareUrl("https://grinta.decathlon.fr/group?id=12fijez4F1", "Rejoins mon groupe sportif sur l'application Grinta !");
       },
     },
   }
@@ -31,13 +33,4 @@
   .title {
     font-size: 32px;
   }
-  /* .home-panel {
-    vertical-align: center;
-    font-size: 20;
-    margin: 15;
-  }
-
-  .description-label {
-    margin-bottom: 15;
-  } */
 </style>
