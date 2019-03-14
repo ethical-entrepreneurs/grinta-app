@@ -15,11 +15,12 @@
 
 <script>
   import Dashboard from './Dashboard';
+  import * as SocialShare from 'nativescript-social-share'
 
   export default {
     methods: {
       shareLink() {
-        console.log('share');
+        SocialShare.shareUrl("https://grinta.decathlon.fr/group?id=12fijez4F1", "Rejoins mon groupe sportif sur l'application Grinta !");
       },
       goToDashboard() {
         this.$navigateTo(Dashboard);
@@ -31,15 +32,15 @@
 <style scoped>
   .action-bar {
     padding: 0;
-    margin-bottom: 20vm;
+    margin-bottom: 20;
   }
 
   .title {
-    font-size: 32px;
-    margin-bottom: 20vm;
+    font-size: 32;
+    margin-bottom: 20;
   }
 
   .sub-title {
-    font-size: 28px;
+    font-size: 28;
   }
 </style>
