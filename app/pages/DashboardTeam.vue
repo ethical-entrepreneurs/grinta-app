@@ -4,7 +4,7 @@
     <FlexboxLayout flexDirection="column">
       <StackLayout>
 
-        <Button text="Create un Grinta Challenge" class="btn btn--primary" @tap="CreateGrinta" />
+        <Button text="Créer un Grinta Challenge" class="btn btn--primary" @tap="CreateGrinta" />
         <Label text="Sportifs:" textWrap="true" class="title" />
         
         <ListView for="user in team.users">
