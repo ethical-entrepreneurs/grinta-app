@@ -11,3 +11,7 @@ refer to http://docs.nativescript.org/ui/theme.
 The imported CSS rules must precede all other types of rules.
 */
 @import '~nativescript-theme-core/css/core.light.css';
+
+@import './scss/global.scss';
+
+@import './scss/components/button.scss';
