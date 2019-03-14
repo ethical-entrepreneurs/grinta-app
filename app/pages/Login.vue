@@ -1,9 +1,11 @@
 <template>
   <Page class="page page--login">
     <FlexboxLayout flexDirection="column" justifyContent="space-around">
-      <Button text="Se connecter avec Décathlon" class="btn btn--primary" @tap="loginDecathlon" />
-      <Label text="Ou" textWrap="true" horizontalAlignment="center"/>
-      <Button text="Créer un compte" class="btn btn--secondary" @tap="createAccount" />
+      <StackLayout>
+        <Button text="Se connecter avec Décathlon" class="btn btn--primary" @tap="loginDecathlon" />
+        <Label text="Ou" textWrap="true" horizontalAlignment="center"/>
+        <Button text="Créer un compte" class="btn btn--secondary" @tap="createAccount" />
+      </StackLayout>
     </FlexboxLayout>
   </Page>
 </template>
