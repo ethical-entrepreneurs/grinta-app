@@ -9,15 +9,12 @@
     </ActionBar>
     <FlexboxLayout flexDirection="column">
       <StackLayout class="content">
-        <Label text="Grintas disponible" class="title" />
-        <ListView class="list-group" for="team in teams">
+        <Label text="Grintas disponible" class="title"></Label>
+        <ListView height="80%" class="list-group" for="team in teams">
           <v-template>
-            <FlexboxLayout class="team" flexDirection="row" alignContent="space-between" @tap="goToTeam">
-              <Image src="~/assets/icons/person.png" />
-              <FlexboxLayout flexDirection="column">
-                <Label :text="team.name" class="team__name"/>
-                <Label :text="`Score: ${team.score}`" />
-              </FlexboxLayout>
+            <FlexboxLayout class="team" flexDirection="column" alignContent="space-between" @tap="goToTeam">
+                <Label :text="team.name" class="team__name"></Label>
+                <Label :text="`Score: ${team.score}`"></Label>
             </FlexboxLayout>
           </v-template>
         </ListView>
@@ -60,15 +57,12 @@
 </script>
 
 <style lang="scss" scoped>
-  FlexboxLayout.challenge {
-    border-color: #FFF;
-    Image {
-      width: 50;
-    }
-    &__name {
-      font-size: 24px;
+  FlexboxLayout.team {
+    Label.team__name {
+      font-size: 18px;
     }
   }
+
   .title {
     font-size: 24px;
     margin-bottom: 38px;
