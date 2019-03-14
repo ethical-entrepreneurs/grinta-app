@@ -10,14 +10,13 @@
     <FlexboxLayout flexDirection="column">
       <StackLayout class="content">
         <Label text="Grintas disponible" class="title" />
-        <ListView class="list-group" :for="grinta in grintas" style="height:75%">
+        <ListView class="list-group" for="team in teams">
           <v-template>
-            <FlexboxLayout flexDirection="row">
+            <FlexboxLayout class="team" flexDirection="row" alignContent="space-between" @tap="goToTeam">
               <Image src="~/assets/icons/person.png" />
               <FlexboxLayout flexDirection="column">
-                <Label :text="grinta.name" />
-                <Label :text="grinta.team" />
-                <Label :text="grinta.score" />
+                <Label :text="team.name" class="team__name"/>
+                <Label :text="`Score: ${team.score}`" />
               </FlexboxLayout>
             </FlexboxLayout>
           </v-template>
@@ -28,6 +27,8 @@
 </template>
 
 <script>
+  import DashboardTeam from "./DashboardTeam";
+
   export default {
     methods: {
       seeGrintas() {
@@ -35,20 +36,22 @@
       },
       myAccount() {
         console.log('my account');
+      },
+      goToTeam() {
+        console.log('go to team');
+        this.$navigateTo(DashboardTeam);
       }
     },
     data() {
       return {
-        grintas: [
+        teams: [
           {
             name: "Grinta Futsal Only",
-            team: "Los Hermanos de Fives",
             score: 1233
           },
           {
             name: "Grinta del fuego",
-            team: "Don diego de le vega"
-            
+            score: 231
           }
         ]
       }
@@ -56,9 +59,19 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  FlexboxLayout.challenge {
+    border-color: #FFF;
+    Image {
+      width: 50;
+    }
+    &__name {
+      font-size: 24px;
+    }
+  }
   .title {
     font-size: 24px;
+    margin-bottom: 38px;
   }
   .content {
     margin: 38px;
