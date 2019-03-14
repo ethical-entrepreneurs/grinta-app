@@ -1,11 +1,13 @@
 <template>
   <Page class="page page--add-friend">
-    <!-- <ActionBar title="Home" class="action-bar" /> -->
+    <ActionBar title="Grinta" class="action-bar" />
     <FlexboxLayout flexDirection="column">
-      <Label text="Félicitation" textWrap="true" horizontalAlignment="center"/>
-      <Image src="~/assets/icons/teamwork.png" stretch="aspectFit" />
-      <Label text="Invite tes amis" textWrap="true" horizontalAlignment="center"/>
-      <Button text="Lien partageable" class="btn btn--primary" @tap="shareLink" />
+      <StackLayout>
+        <Label text="Félicitation !" textWrap="true" horizontalAlignment="center" class="title"/>
+        <Image src="~/assets/icons/teamwork.png" stretch="aspectFit" />
+        <Label text="Invite tes amis !" textWrap="true" horizontalAlignment="center"/>
+        <Button text="Lien partageable" class="btn btn--primary" @tap="shareLink" />
+      </StackLayout>
     </FlexboxLayout>
   </Page>
 </template>
@@ -21,6 +23,14 @@
 </script>
 
 <style scoped>
+  .action-bar {
+    padding: 0;
+    margin-bottom: 20vm;
+  }
+
+  .title {
+    font-size: 32px;
+  }
   /* .home-panel {
     vertical-align: center;
     font-size: 20;
