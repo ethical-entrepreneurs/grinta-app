@@ -7,17 +7,23 @@
         <Image src="~/assets/icons/teamwork.png" stretch="aspectFit" width="50%" />
         <Label text="Invite tes amis !" textWrap="true" horizontalAlignment="center" class="sub-title"/>
         <Button text="Lien partageable" class="btn btn--primary" @tap="shareLink" />
+        <Button text="Allez au dashboard" class="btn btn--secondary" @tap="goToDashboard" />
       </StackLayout>
     </FlexboxLayout>
   </Page>
 </template>
 
 <script>
+  import Dashboard from './Dashboard';
+
   export default {
     methods: {
       shareLink() {
         console.log('share');
       },
+      goToDashboard() {
+        this.$navigateTo(Dashboard);
+      }
     },
   }
 </script>
