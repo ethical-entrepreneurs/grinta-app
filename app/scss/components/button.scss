@@ -1,6 +1,12 @@
-.btn {
-  
-  &--primary {
+Button.btn {
+  border-radius: 25px;
 
+  &--primary {
+    color: #FFF;
+    background: #006cff;
+  }
+  &--secondary {
+    color: #000;
+    background: #eee;
   }
 }
