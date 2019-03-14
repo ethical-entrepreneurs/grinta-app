@@ -23,6 +23,7 @@
         SocialShare.shareUrl("https://grinta.decathlon.fr/group?id=12fijez4F1", "Rejoins mon groupe sportif sur l'application Grinta !");
       },
       goToDashboard() {
+        console.log('go to dashboard');
         this.$navigateTo(Dashboard);
       }
     },
