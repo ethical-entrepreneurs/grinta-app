@@ -4,8 +4,8 @@
     <FlexboxLayout flexDirection="column">
       <StackLayout>
         <Label text="Félicitation !" textWrap="true" horizontalAlignment="center" class="title"/>
-        <Image src="~/assets/icons/teamwork.png" stretch="aspectFit" />
-        <Label text="Invite tes amis !" textWrap="true" horizontalAlignment="center"/>
+        <Image src="~/assets/icons/teamwork.png" stretch="aspectFit" width="50%" />
+        <Label text="Invite tes amis !" textWrap="true" horizontalAlignment="center" class="sub-title"/>
         <Button text="Lien partageable" class="btn btn--primary" @tap="shareLink" />
       </StackLayout>
     </FlexboxLayout>
@@ -30,14 +30,10 @@
 
   .title {
     font-size: 32px;
-  }
-  /* .home-panel {
-    vertical-align: center;
-    font-size: 20;
-    margin: 15;
+    margin-bottom: 20vm;
   }
 
-  .description-label {
-    margin-bottom: 15;
-  } */
+  .sub-title {
+    font-size: 28px;
+  }
 </style>
