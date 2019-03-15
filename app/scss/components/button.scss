@@ -1,12 +1,23 @@
 Button.btn {
   border-radius: 25px;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  height: 56;
+  border-radius: 3;
 
   &--primary {
     color: #FFF;
-    background: #006cff;
+    background: $blue;
   }
+
   &--secondary {
     color: #000;
     background: #eee;
+  }
+
+  &--bg {
+    color: #0082C3;
+    background: white;
   }
 }
