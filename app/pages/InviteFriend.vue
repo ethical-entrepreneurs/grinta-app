@@ -14,7 +14,7 @@
 
       <StackLayout>
         <Button text="Partage le lien" class="btn btn--primary" textWrap="true" @tap="shareLink" />
-        <Button text="Non merci" class="btn btn--secondary" textWrap="true" @tap="goToDashboard" />
+        <Button text="Suivant" class="btn btn--secondary" textWrap="true" @tap="goToDashboard" />
       </StackLayout>
     </FlexboxLayout>
   </Page>
@@ -28,7 +28,6 @@
     methods: {
       shareLink() {
         SocialShare.shareUrl("https://grinta.decathlon.fr/group?id=12fijez4F1", "Rejoins mon groupe sportif sur l'application Grinta !");
-        this.goToDashboard();
       },
       goToDashboard() {
         console.log('go to dashboard');

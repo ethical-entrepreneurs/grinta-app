@@ -1,9 +1,9 @@
 import Vue from 'nativescript-vue';
 
-import Dashboard from './pages/Dashboard';
+import Welcome from './pages/Welcome';
 
 Vue.config.silent = false;
 
 new Vue({
-  render: h => h('frame', [h(Dashboard)])
+  render: h => h('frame', [h(Welcome)])
 }).$start();
