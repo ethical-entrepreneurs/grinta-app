@@ -1,8 +1,10 @@
 .input {
   border-width: 1;
   border-color: #BABCBF;
+  border-bottom-color: $blue;
+  border-bottom-width: 2;
   border-radius: 2;
-  height: 40;
+  height: 60;
   padding-left: 15;
   padding-right: 15;
 }

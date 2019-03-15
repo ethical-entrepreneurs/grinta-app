@@ -1,13 +1,20 @@
 <template>
   <Page class="page page--add-friend">
-    <ActionBar title="Grinta" class="action-bar" />
-    <FlexboxLayout flexDirection="column">
+    <ActionBar class="action-back">
+      <NavigationButton android.systemIcon="ic_menu_back" />
+    </ActionBar>
+
+    <FlexboxLayout justifyContent="space-between" flexDirection="column">
       <StackLayout>
-        <Label text="Félicitation !" textWrap="true" horizontalAlignment="center" class="title"/>
-        <Image src="~/assets/icons/teamwork.png" stretch="aspectFit" width="50%" />
-        <Label text="Invite tes amis !" textWrap="true" horizontalAlignment="center" class="sub-title"/>
-        <Button text="Lien partageable" class="btn btn--primary" @tap="shareLink" />
-        <Button text="Allez au dashboard" class="btn btn--secondary" @tap="goToDashboard" />
+        <Image src="~/assets/img/congrat-img.png" stretch="aspectFit" width="70%" />
+        <Label text="Congrats !" textWrap="true" horizontalAlignment="center" class="title"/>
+
+        <Label text="Ton équipe a bien été créee" textWrap="true" class="sub-title" />
+        <Label text="Invite tes amis à la rejoindre ! " textWrap="true" class="sub-title" />
+      </StackLayout>
+
+      <StackLayout>
+        <Button text="Partage le lien" class="btn btn--primary" textWrap="true" @tap="shareLink" />
       </StackLayout>
     </FlexboxLayout>
   </Page>
@@ -15,12 +22,13 @@
 
 <script>
   import Dashboard from './Dashboard';
-  import * as SocialShare from 'nativescript-social-share'
+  import * as SocialShare from 'nativescrip"t-social-share'
 
   export default {
     methods: {
       shareLink() {
         SocialShare.shareUrl("https://grinta.decathlon.fr/group?id=12fijez4F1", "Rejoins mon groupe sportif sur l'application Grinta !");
+        // this.goToDashboard()
       },
       goToDashboard() {
         console.log('go to dashboard');
@@ -30,18 +38,23 @@
   }
 </script>
 
-<style scoped>
-  .action-bar {
-    padding: 0;
-    margin-bottom: 20;
-  }
+<style lang="scss" scoped>
+  .page {
+    &--add-friend {
+      background-color: #49B2DC;
 
-  .title {
-    font-size: 32;
-    margin-bottom: 20;
-  }
+      Image {
+        top: 40;
+      }
 
-  .sub-title {
-    font-size: 28;
+      .title {
+        color: white;
+      }
+
+      .sub-title {
+        color: white;
+        margin: 0;
+      }
+    }
   }
 </style>
