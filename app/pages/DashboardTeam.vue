@@ -42,6 +42,7 @@
     data() {
       return {
         team: {},
+        users: [],
       }
     },
     mounted() {
@@ -55,6 +56,11 @@
         .then(response => {
           console.log(response.data);
           self.team = response.data;
+          self.team.users.forEach(uri => {
+            Grinta
+              .request(uri)
+              .then(response => self.users.push(response.data));
+          });
         })
         .catch(error => console.log(error));
     },
