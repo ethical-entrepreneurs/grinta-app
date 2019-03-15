@@ -1,5 +1,11 @@
 $blue: #006cff;
 
 .container {
-  width: 80%;
+  width: 90%;
+}
+
+.img-rounded {
+  border-radius: 100%;
+  border-width: 3;
+  border-color: $blue;
 }
