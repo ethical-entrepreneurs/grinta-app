@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.title {
+  color: #262628;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 42;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+  margin-top: 80;
+  margin-bottom: 50;
+}
+
+.sub-title {
+  color: $blue;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24;
+  text-align: center;
+  margin-bottom: 50;
+}

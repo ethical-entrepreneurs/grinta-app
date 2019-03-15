@@ -1,10 +1,13 @@
 <template>
   <Page class="page page--login">
-    <FlexboxLayout flexDirection="column" justifyContent="space-around">
+    <ActionBar class="action-back">
+      <NavigationButton android.systemIcon="ic_menu_back" @tap="goBack" />
+    </ActionBar>
+    <FlexboxLayout flexDirection="column" class="container">
       <StackLayout>
-        <Button text="Se connecter avec Décathlon" class="btn btn--primary" @tap="loginDecathlon" />
-        <Label text="Ou" textWrap="true" horizontalAlignment="center"/>
-        <Button text="Créer un compte" class="btn btn--secondary" @tap="createAccount" />
+        <Label text="Connexion" class="title" />
+        <Label text="Pour créer ton premier challenge connecte toi !" textWrap="true" class="sub-title" />
+        <Button text="Connexion ou inscription avec Decathlon" class="btn btn--primary" textWrap="true" @tap="loginDecathlon" />
       </StackLayout>
     </FlexboxLayout>
   </Page>
@@ -33,5 +36,13 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  .page {
+    &--login {
+      .btn {
+        font-size: 12;
+        text-align: center;
+      }
+    }
+  }
 </style>
