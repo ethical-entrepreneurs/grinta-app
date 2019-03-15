@@ -5,13 +5,7 @@ class Grinta
     static challengesAll() {
         return axios({
             url: 'http://www.mocky.io/v2/5c8b7087360000f40a8f80ad',
-            method: 'GET',
-            headers: {
-                'cache-control': 'no-cache',
-                'Accept': 'application/json'
-            },
-            resolveWithFullResponse: true,
-            json: true,
+            method: 'GET'
         });
     }
 
@@ -26,12 +20,6 @@ class Grinta
         return axios({
             url: 'http://www.mocky.io/v2/5c8b7f03360000cd198f8112',
             method: 'GET',
-            headers: {
-                'cache-control': 'no-cache',
-                'Accept': 'application/json'
-            },
-            resolveWithFullResponse: true,
-            json: true,
         });
     }
 
