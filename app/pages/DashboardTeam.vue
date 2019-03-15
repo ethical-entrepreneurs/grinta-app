@@ -1,21 +1,33 @@
 <template>
   <Page class="page page--dashboard-team">
-    <ActionBar title="DktTeam Dashboard" class="action-bar" />
+    <ActionBar class="action action-back" :title="team.name || 'team dashboard'">
+      <NavigationButton android.systemIcon="ic_menu_back" />
+    </ActionBar>
     <FlexboxLayout flexDirection="column">
-      <StackLayout>
-
+      <StackLayout class="content">
         <Button text="Créer un Grinta Challenge" class="btn btn--primary" @tap="CreateGrinta" />
-        <Label text="Sportifs:" textWrap="true" class="title" />
-        
-        <StackLayout for="user in team.users">
+        <FlexboxLayout flexDirection="column" class="bg">
+          <Label text="Upcoming Grintas" class="title title__page" textWrap="true" horizontalAlignment="center"  />
+          <StackLayout class="test" />
+        </FlexboxLayout>
+        <Label text="Grinta challenges à venir" class="title container" textWrap="true" />
+        <ListView height="80%" class="list-group container" for="challenge in team.challenges" separatorColor="transparent">
           <v-template>
-            <StackLayout>
-              <Label :text="user.name" />
-              <Label :text="user.email" />
-            </StackLayout>
-          </v-template>
-        </StackLayout>
 
+            <FlexboxLayout class="challenge" flexDirection="column" alignContent="space-between">
+              <Label :text="challenge.name" class="challenge__name" />
+
+              <FlexboxLayout class="challenge__container">
+                <Image class="challenge__sport-icon" src="~/assets/icons/sport-foot.png" stretch="aspectFit" width="10%" />
+                <FlexboxLayout class="challenge__description" flexDirection="column">
+                  <Label class="challenge__sport" text="Challenge Football" />
+                  <Label class="valid challenge__etat" text="8/8 payer" />
+                </FlexboxLayout>
+              </FlexboxLayout>
+
+            </FlexboxLayout>
+          </v-template>
+        </ListView>
       </StackLayout>
     </FlexboxLayout>
   </Page>
@@ -29,19 +41,20 @@
     props: ['teamId'],
     data() {
       return {
-        team: {}
+        team: {},
       }
     },
     mounted() {
       console.log("DashboardTeam");
       console.log(this.teamId);
 
-      Grinta
-        .teamsGet(this.teamId)
-        .then(response => {
-          this.team = response.data.data;
+      const self = this;
 
-          console.log(this.team.users);
+      Grinta
+        .request(this.teamId)
+        .then(response => {
+          console.log(response.data);
+          self.team = response.data;
         })
         .catch(error => console.log(error));
     },

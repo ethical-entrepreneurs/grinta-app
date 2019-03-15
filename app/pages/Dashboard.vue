@@ -6,13 +6,14 @@
     <FlexboxLayout flexDirection="column">
       <StackLayout class="content">
         <FlexboxLayout flexDirection="column" class="bg">
-          <Label text="TeamDeOuf" class="title title__page" textWrap="true" horizontalAlignment="center"  />
+          <Label v-if="user.username" :text="`Salut ${user.username.split('.')[0]}`" class="title title__page" textWrap="true" horizontalAlignment="center"  />
           <StackLayout class="test" />
         </FlexboxLayout>
-        <Label text="Grinta challenges à venir" class="title container" textWrap="true" />
+        <Label text="Mes équipes" class="title container" textWrap="true" />
         <ListView height="80%" class="list-group container" for="team in teams" separatorColor="transparent">
           <v-template>
-            <FlexboxLayout class="challenge" flexDirection="column" alignContent="space-between" @tap="goToTeam(team.identifier)">
+
+            <FlexboxLayout class="challenge" flexDirection="column" alignContent="space-between" @tap="goToTeam(team['@id'])">
               <Label :text="team.name" class="challenge__name" />
 
               <FlexboxLayout class="challenge__container">
@@ -34,15 +35,10 @@
 <script>
   import DashboardTeam from './DashboardTeam';
   import Grinta from '../services/Grinta';
+  import Store from '../services/Store';
 
   export default {
     methods: {
-      seeGrintas() {
-        console.log('see grintas');
-      },
-      myAccount() {
-        console.log('my account');
-      },
       goToTeam(identifier) {
         console.log('go to team', identifier);
         this.$navigateTo(DashboardTeam, { props: { teamId: identifier }});
@@ -50,20 +46,19 @@
     },
     data() {
       return {
+        user: {},
         teams: []
       }
     },
     mounted: function () {
       console.log('mounted');
 
-      Grinta.teamsMine()
-        .then(response => {
-          console.log('grinta teams mine response');
-          this.teams = response.data.data;
-        })
-        .catch(error => {
-          console.error(error);
-        });
+      this.user = Store.get('user');
+      this.user.teams.forEach(teamURI => {
+        Grinta
+          .request(teamURI)
+          .then(response => this.teams.push(response.data));
+      });
     },
   }
 </script>

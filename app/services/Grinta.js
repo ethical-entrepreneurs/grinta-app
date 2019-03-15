@@ -2,6 +2,13 @@ import axios from "axios";
 
 class Grinta
 {
+    static request(uri) {
+        return axios({
+            url: 'http://jarvis01.synology.me:8080' + uri,
+            method: 'GET',
+        });
+    }
+
     static me() {
         return axios({
             url: 'http://jarvis01.synology.me:8080/users/1',
@@ -21,7 +28,7 @@ class Grinta
 
     static teamsMine() {
         return axios({
-            url: 'http://www.mocky.io/v2/5c8b75c8360000e30c8f80da',
+            url: 'http://jarvis01.synology.me:8080/teams',
             method: 'GET',
         });
     }

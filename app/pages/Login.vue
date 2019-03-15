@@ -26,7 +26,6 @@
         Grinta
           .me()
           .then(response => {
-            console.log('users/me', response);
             Store.set('user', response.data);
             this.$navigateTo(CreateTeam);
           })
