@@ -22,7 +22,7 @@
 
 <script>
   import Dashboard from './Dashboard';
-  import * as SocialShare from 'nativescrip"t-social-share'
+  import * as SocialShare from 'nativescript-social-share'
 
   export default {
     methods: {
