@@ -1,6 +1,6 @@
 <template>
   <Page class="page page--create-team">
-    <ActionBar class="action-back">
+    <ActionBar class="action action-back">
       <NavigationButton android.systemIcon="ic_menu_back" />
     </ActionBar>
     <FlexboxLayout justifyContent="space-between" flexDirection="column" class="container">

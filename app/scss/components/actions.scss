@@ -1,6 +1,8 @@
 .action {
+  background: $blue;
+  color: white;
+  text-transform: uppercase;
+
   &-back {
-    background: $blue;
-    color: white;
   }
 }

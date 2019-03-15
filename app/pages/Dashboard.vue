@@ -1,20 +1,28 @@
 <template>
   <Page class="page page--dashboard">
-    <ActionBar flat="true">
-      <StackLayout orientation="horizontal">
-        <Image width="33%" src="~/assets/icons/person.png" @tap="seeGrintas" verticalAlignment="center" horizontalAlignment="left" stretch="none" />
-        <Label width="33%" text="Grinta" fontSize="38px" verticalAlignment="center" />
-        <Image width="33%" src="~/assets/icons/person.png" @tap="myAccount" verticalAlignment="center" horizontalAlignment="right" stretch="none" />
-      </StackLayout>
+    <ActionBar class="action action-back" title="Mes teams">
+      <NavigationButton android.systemIcon="ic_menu_back" />
     </ActionBar>
     <FlexboxLayout flexDirection="column">
       <StackLayout class="content">
-        <Label text="Grintas disponible" class="title"></Label>
-        <ListView height="80%" class="list-group" for="team in teams">
+        <FlexboxLayout flexDirection="column" class="bg">
+          <Label text="TeamDeOuf" class="title title__page" textWrap="true" horizontalAlignment="center"  />
+          <StackLayout class="test" />
+        </FlexboxLayout>
+        <Label text="Grinta challenges à venir" class="title container" textWrap="true" />
+        <ListView height="80%" class="list-group container" for="team in teams" separatorColor="transparent">
           <v-template>
-            <FlexboxLayout class="team" flexDirection="column" alignContent="space-between" @tap="goToTeam(team.identifier)">
-                <Label :text="team.name" class="team__name"></Label>
-                <Label :text="`Score: ${team.score}`"></Label>
+            <FlexboxLayout class="challenge" flexDirection="column" alignContent="space-between" @tap="goToTeam(team.identifier)">
+              <Label :text="team.name" class="challenge__name" />
+
+              <FlexboxLayout class="challenge__container">
+                <Image class="challenge__sport-icon" src="~/assets/icons/sport-foot.png" stretch="aspectFit" width="10%" />
+                <FlexboxLayout class="challenge__description" flexDirection="column">
+                  <Label class="challenge__sport" text="Challenge Football" />
+                  <Label class="valid challenge__etat" text="8/8 payer" />
+                </FlexboxLayout>
+              </FlexboxLayout>
+
             </FlexboxLayout>
           </v-template>
         </ListView>
@@ -61,17 +69,84 @@
 </script>
 
 <style lang="scss" scoped>
-  FlexboxLayout.team {
-    Label.team__name {
-      font-size: 18px;
-    }
-  }
+  .page {
+    &--dashboard {
+      background-color: #F5F5F6;
 
-  .title {
-    font-size: 24px;
-    margin-bottom: 38px;
-  }
-  .content {
-    margin: 38px;
+      .test {
+        width: 100%;
+        height: 200;
+        border-style: solid;
+        border-width: 0 0 100% 500;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: #F5F5F6;
+        border-left-color: transparent;
+        margin-top: -150;
+      }
+      .bg {
+        background-image: url('~/assets/img/bg-team.png');
+        text-align: center;
+        display: flex;
+      }
+
+      .title {
+        margin-top: 30;
+      }
+
+      .title__page {
+        width: 100%;
+        color: #fff;
+        text-align: center;
+        margin-left: 100;
+        margin-top: 50;
+      }
+
+      .challenge {
+        background: #FFF;
+        padding: 20;
+
+        &__name {
+          font-size: 28;
+          font-weight: bold;
+          font-style: italic;
+        }
+
+        &__container{
+          /*background: #D8D8D8;*/
+          padding: 10;
+        }
+
+        &__sport {
+          font-size: 16;
+
+          &-icon {
+            margin-right: 20;
+          }
+        }
+
+        &__etat {
+          font-size: 16;
+
+          &.valid {
+            color: #02BE8A;
+          }
+        }
+      }
+
+      .title {
+        text-align: left;
+      }
+
+      .list-group {
+        background-color: transparent;
+      }
+
+      .team {
+        background: white;
+        padding: 10 20;
+        margin-bottom: 10px;
+      }
+    }
   }
 </style>

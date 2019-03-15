@@ -1,6 +1,6 @@
 <template>
   <Page class="page page--add-friend">
-    <ActionBar class="action-back">
+    <ActionBar class="action action-back">
       <NavigationButton android.systemIcon="ic_menu_back" />
     </ActionBar>
 
