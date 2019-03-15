@@ -9,7 +9,7 @@
         <Image src="~/assets/img/team-1.png" stretch="aspectFit" width="50%" class="team-img img-rounded" />
 
         <Label text="Nom de l'équipe" class="label" textWrap="true" />
-        <TextField class="input" autocorrect=false />
+        <TextField class="input" autocorrect=false :text="this.teamName" hint="Entrez le nom" />
 
       </StackLayout>
       <StackLayout>
@@ -21,10 +21,17 @@
 
 <script>
   import InviteFriend from './InviteFriend';
+  import Store from '../services/Store';
 
   export default {
+    data() {
+      return {
+        teamName: ''
+      }
+    },
     methods: {
       next() {
+        Store.set('teamName', this.teamName);
         this.$navigateTo(InviteFriend);
       },
     },

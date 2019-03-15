@@ -28,7 +28,7 @@
     methods: {
       shareLink() {
         SocialShare.shareUrl("https://grinta.decathlon.fr/group?id=12fijez4F1", "Rejoins mon groupe sportif sur l'application Grinta !");
-        // this.goToDashboard()
+        this.goToDashboard();
       },
       goToDashboard() {
         console.log('go to dashboard');

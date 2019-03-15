@@ -9,7 +9,7 @@
     </ActionBar>
     <FlexboxLayout flexDirection="column">
       <StackLayout class="content">
-        <Label text="Grintas disponible" class="title"></Label>
+        <Label v-if="user.username" :text="`Salut ${user.username.split('.')[0]}`" class="title"></Label>
         <ListView height="80%" class="list-group" for="team in teams">
           <v-template>
             <FlexboxLayout class="team" flexDirection="column" alignContent="space-between" @tap="goToTeam(team.identifier)">
@@ -26,6 +26,7 @@
 <script>
   import DashboardTeam from './DashboardTeam';
   import Grinta from '../services/Grinta';
+  import Store from '../services/Store';
 
   export default {
     methods: {
@@ -42,11 +43,14 @@
     },
     data() {
       return {
+        user: {},
         teams: []
       }
     },
     mounted: function () {
       console.log('mounted');
+
+      this.user = Store.get('user');
 
       Grinta.teamsMine()
         .then(response => {

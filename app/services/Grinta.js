@@ -2,6 +2,16 @@ import axios from "axios";
 
 class Grinta
 {
+    static me() {
+        return axios({
+            url: 'http://jarvis01.synology.me:8080/users/1',
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+    }
+
     static challengesAll() {
         return axios({
             url: 'http://www.mocky.io/v2/5c8b7087360000f40a8f80ad',
