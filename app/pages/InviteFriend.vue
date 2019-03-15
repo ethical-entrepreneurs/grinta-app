@@ -6,15 +6,15 @@
 
     <FlexboxLayout justifyContent="space-between" flexDirection="column">
       <StackLayout>
-        <Image src="~/assets/img/congrat-img.png" stretch="aspectFit" width="70%" />
+        <Image src="~/assets/img/congrat-img.png" stretch="aspectFit" width="65%" />
         <Label text="Congrats !" textWrap="true" horizontalAlignment="center" class="title"/>
-
         <Label text="Ton équipe a bien été créee" textWrap="true" class="sub-title" />
         <Label text="Invite tes amis à la rejoindre ! " textWrap="true" class="sub-title" />
       </StackLayout>
 
       <StackLayout>
         <Button text="Partage le lien" class="btn btn--primary" textWrap="true" @tap="shareLink" />
+        <Button text="Non merci" class="btn btn--secondary" textWrap="true" @tap="goToDashboard" />
       </StackLayout>
     </FlexboxLayout>
   </Page>
@@ -28,7 +28,7 @@
     methods: {
       shareLink() {
         SocialShare.shareUrl("https://grinta.decathlon.fr/group?id=12fijez4F1", "Rejoins mon groupe sportif sur l'application Grinta !");
-        // this.goToDashboard()
+        this.goToDashboard();
       },
       goToDashboard() {
         console.log('go to dashboard');
@@ -49,6 +49,7 @@
 
       .title {
         color: white;
+        margin-bottom: 20;
       }
 
       .sub-title {

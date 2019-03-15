@@ -15,23 +15,25 @@
 
 <script>
   import CreateTeam from './CreateTeam';
-  import axios from 'axios';
+  import Grinta from '../services/Grinta';
+  import Store from '../services/Store';
 
   export default {
     methods: {
       loginDecathlon() {
         console.log('login decathlon');
 
-        // axios
-        //   .get('https://api-eu.decathlon.net/connect/oauth/authorize?client_id=795e71b3-f738-4784-9107-6898ae00dd26&redirect_uri=https://jarvis01.synology.me:8444/confirm_login&response_type=code&state=tedst&scope=openid%20email%20profile')
-        //   .then(response => console.log(response))
-        //   .catch(error => console.error(error));
-
-        this.$navigateTo(CreateTeam);
+        Grinta
+          .me()
+          .then(response => {
+            console.log('users/me', response);
+            Store.set('user', response.data);
+            this.$navigateTo(CreateTeam);
+          })
+          .catch(error => {
+            console.error(error);
+          });
       },
-      createAccount() {
-        console.log('create account');
-      }
     },
   }
 </script>
