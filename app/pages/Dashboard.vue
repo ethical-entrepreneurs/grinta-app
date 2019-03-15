@@ -12,7 +12,7 @@
         <Label text="Grintas disponible" class="title"></Label>
         <ListView height="80%" class="list-group" for="team in teams">
           <v-template>
-            <FlexboxLayout class="team" flexDirection="column" alignContent="space-between" @tap="goToTeam">
+            <FlexboxLayout class="team" flexDirection="column" alignContent="space-between" @tap="goToTeam(team.identifier)">
                 <Label :text="team.name" class="team__name"></Label>
                 <Label :text="`Score: ${team.score}`"></Label>
             </FlexboxLayout>
@@ -24,7 +24,8 @@
 </template>
 
 <script>
-  import DashboardTeam from "./DashboardTeam";
+  import DashboardTeam from './DashboardTeam';
+  import Grinta from '../services/Grinta';
 
   export default {
     methods: {
@@ -34,25 +35,28 @@
       myAccount() {
         console.log('my account');
       },
-      goToTeam() {
-        console.log('go to team');
-        this.$navigateTo(DashboardTeam);
+      goToTeam(identifier) {
+        console.log('go to team', identifier);
+        this.$navigateTo(DashboardTeam, { props: { teamId: identifier }});
       }
     },
     data() {
       return {
-        teams: [
-          {
-            name: "Grinta Futsal Only",
-            score: 1233
-          },
-          {
-            name: "Grinta del fuego",
-            score: 231
-          }
-        ]
+        teams: []
       }
-    }
+    },
+    mounted: function () {
+      console.log('mounted');
+
+      Grinta.teamsMine()
+        .then(response => {
+          console.log('grinta teams mine response');
+          this.teams = response.data.data;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
   }
 </script>
 

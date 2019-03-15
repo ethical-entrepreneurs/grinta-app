@@ -7,13 +7,14 @@
         <Button text="Créer un Grinta Challenge" class="btn btn--primary" @tap="CreateGrinta" />
         <Label text="Sportifs:" textWrap="true" class="title" />
         
-        <ListView for="user in team.users">
+        <StackLayout for="user in team.users">
           <v-template>
             <StackLayout>
               <Label :text="user.name" />
+              <Label :text="user.email" />
             </StackLayout>
           </v-template>
-        </ListView>
+        </StackLayout>
 
       </StackLayout>
     </FlexboxLayout>
@@ -22,21 +23,27 @@
 
 <script>
   import GrintaTuto from "./GrintaTuto";
+  import Grinta from '../services/Grinta';
 
   export default {
+    props: ['teamId'],
     data() {
       return {
-        team: {
-          users: [
-            {
-              name: 'Eddy Malou'
-            },
-            {
-              name: 'Sylvain Durif'
-            },
-          ],
-        },
+        team: {}
       }
+    },
+    mounted() {
+      console.log("DashboardTeam");
+      console.log(this.teamId);
+
+      Grinta
+        .teamsGet(this.teamId)
+        .then(response => {
+          this.team = response.data.data;
+
+          console.log(this.team.users);
+        })
+        .catch(error => console.log(error));
     },
     methods: {
       CreateGrinta() {
